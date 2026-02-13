@@ -63,15 +63,31 @@ public class EditorBO implements IEditorBO {
 		String fileExtension = getFileExtension(fileName);
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader(file));
-			String line;
-
-			while ((line = reader.readLine()) != null) {
-				fileContent.append(line).append("\n");
-			}
-			reader.close();
-
+			// Support multiple file types including docx, pdf, and common text files
 			if (fileExtension.equalsIgnoreCase("txt") || fileExtension.equalsIgnoreCase("md5")) {
+				reader = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = reader.readLine()) != null) {
+					fileContent.append(line).append("\n");
+				}
+				reader.close();
+				return db.createFileInDB(fileName, fileContent.toString());
+			} else if (fileExtension.equalsIgnoreCase("docx") || fileExtension.equalsIgnoreCase("doc")) {
+				// For now, show user a helpful message for unsupported formats
+				LOGGER.warn("Unsupported file format: " + fileExtension + ". Please convert to .txt format.");
+				return false;
+			} else if (fileExtension.equalsIgnoreCase("pdf")) {
+				// For now, show user a helpful message for unsupported formats  
+				LOGGER.warn("Unsupported file format: " + fileExtension + ". Please convert to .txt format.");
+				return false;
+			} else {
+				// Try to read as plain text for other extensions
+				reader = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = reader.readLine()) != null) {
+					fileContent.append(line).append("\n");
+				}
+				reader.close();
 				return db.createFileInDB(fileName, fileContent.toString());
 			}
 		} catch (Exception e) {
