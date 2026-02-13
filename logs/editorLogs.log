@@ -20,3 +20,23 @@
 2024-12-10 21:25:27.599 [AWT-EventQueue-0] INFO  pl.EditorPO - Do you want to delete the selected file?
 2024-12-10 21:25:40.338 [AWT-EventQueue-0] INFO  pl.EditorPO - TF-IDF Score for 'surah falaq.txt' is: 0.009627044174443686
 2024-12-10 21:25:45.280 [AWT-EventQueue-0] INFO  pl.EditorPO - TF-IDF Score for 'quran-simple.txt' is: 0.014417461355646866
+2026-02-14 00:08:04.481 [Thread-0] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:08:25.967 [Thread-1] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:08:48.430 [AWT-EventQueue-0] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:08:49.593 [AWT-EventQueue-0] INFO  pl.EditorPO - File creation failed!
+2026-02-14 00:08:49.608 [AWT-EventQueue-0] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:08:55.166 [AWT-EventQueue-0] INFO  pl.EditorPO - Do you want to delete the selected file?
+2026-02-14 00:08:56.474 [AWT-EventQueue-0] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:08:58.458 [AWT-EventQueue-0] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:09:01.308 [AWT-EventQueue-0] ERROR pl.EditorPO - (conn=55) Table 'realeditor.files' doesn't exist
+2026-02-14 00:09:04.178 [AWT-EventQueue-0] ERROR pl.EditorPO - Could not Search, Please Enter at least 3 letter to search
+2026-02-14 00:11:54.307 [AWT-EventQueue-0] INFO  pl.EditorPO - Do you want to delete the selected file?
+2026-02-14 00:11:58.191 [AWT-EventQueue-0] WARN  pl.EditorPO - Please select a file to delete.
+2026-02-14 01:04:23.352 [Thread-0] ERROR pl.EditorPO - (conn=56) Table 'realeditor.files' doesn't exist
+2026-02-14 01:04:26.021 [Thread-0] INFO  pl.EditorPO - test_dict.txt failed to upload!
+2026-02-14 01:04:26.037 [Thread-0] ERROR pl.EditorPO - (conn=56) Table 'realeditor.files' doesn't exist
+2026-02-14 01:21:29.885 [Thread-1] ERROR pl.EditorPO - (conn=56) Table 'realeditor.files' doesn't exist
+2026-02-14 01:24:56.449 [Thread-0] INFO  pl.EditorPO - Assignment2.docx failed to upload!
+2026-02-14 01:28:03.090 [Thread-0] ERROR pl.EditorPO - (conn=65) Unknown column 'NaN' in 'VALUES'
+2026-02-14 01:28:03.103 [Thread-2] ERROR pl.EditorPO - (conn=65) Unknown column 'NaN' in 'SET'
+2026-02-14 01:28:05.743 [Thread-0] INFO  pl.EditorPO - TXT.txt failed to upload!
