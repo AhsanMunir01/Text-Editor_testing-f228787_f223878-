@@ -77,7 +77,7 @@ public class EditorBO implements IEditorBO {
 				LOGGER.warn("Unsupported file format: " + fileExtension + ". Please convert to .txt format.");
 				return false;
 			} else if (fileExtension.equalsIgnoreCase("pdf")) {
-				// For now, show user a helpful message for unsupported formats  
+				// For now, show user a helpful message for unsupported formats
 				LOGGER.warn("Unsupported file format: " + fileExtension + ". Please convert to .txt format.");
 				return false;
 			} else {
@@ -174,6 +174,15 @@ public class EditorBO implements IEditorBO {
 	public Map<String, String> segmentWords(String text) {
 		// TODO Auto-generated method stub
 		return db.segmentWords(text);
+	}
+
+	@Override
+	public boolean shouldAutoSave(String content) {
+		if (content == null || content.trim().isEmpty()) {
+			return false;
+		}
+		int wordCount = content.trim().split("\\s+").length;
+		return wordCount > 500;
 	}
 
 }

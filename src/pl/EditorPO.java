@@ -62,8 +62,8 @@ public class EditorPO extends JFrame {
 	private int currentPage = 1;
 	private int totalPageCount = 0;
 	private int selectedRow = 0;
-//	private int unselectedRows = 0;
-//	private int totalRows = 0;
+	// private int unselectedRows = 0;
+	// private int totalRows = 0;
 	private Thread importThread;
 	private Thread autoSaveThread;
 	private boolean autoSaveRunning = false;
@@ -88,19 +88,19 @@ public class EditorPO extends JFrame {
 	private Thread wordCountThread;
 	private Thread avgWordLengthThread;
 	private Thread totalLineCountThread;
-	private boolean wordCountRunning = true; 
-	private boolean avgWordLengthRunning = true; 
+	private boolean wordCountRunning = true;
+	private boolean avgWordLengthRunning = true;
 	private boolean totalLineCountRunning = true;
 	Font buttonFont = new Font("Arial", Font.BOLD, 12);
 
 	public EditorPO(IEditorBO businessObj) {
 		this.businessObj = businessObj;
-		
+
 		try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		setTitle("Real Text Editor");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -157,32 +157,32 @@ public class EditorPO extends JFrame {
 		importProgressLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		mainPanel.add(importProgressLabel, BorderLayout.SOUTH);
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
-		
+
 		importFileButton.setFont(buttonFont);
-        createFileButton.setFont(buttonFont);
-        deleteFileButton.setFont(buttonFont);
-        viewFilesButton.setFont(buttonFont);
-        tfidfButton.setFont(buttonFont);
-        searchbutton.setFont(buttonFont);
-        importProgressLabel.setFont(buttonFont);
-		
+		createFileButton.setFont(buttonFont);
+		deleteFileButton.setFont(buttonFont);
+		viewFilesButton.setFont(buttonFont);
+		tfidfButton.setFont(buttonFont);
+		searchbutton.setFont(buttonFont);
+		importProgressLabel.setFont(buttonFont);
+
 		importFileButton.setBackground(Color.WHITE);
-        importFileButton.setForeground(Color.BLACK);
-        createFileButton.setBackground(Color.WHITE);
-        createFileButton.setForeground(Color.BLACK);
-        deleteFileButton.setBackground(Color.WHITE);
-        deleteFileButton.setForeground(Color.BLACK);
-        viewFilesButton.setBackground(Color.WHITE);
-        viewFilesButton.setForeground(Color.BLACK);
-        tfidfButton.setBackground(Color.WHITE);
-        tfidfButton.setForeground(Color.BLACK);
-        
-        for (Component button : buttonPanel.getComponents()) {
-            if (button instanceof JButton) {
-                ((JButton) button).setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-            }
-        }
-		
+		importFileButton.setForeground(Color.BLACK);
+		createFileButton.setBackground(Color.WHITE);
+		createFileButton.setForeground(Color.BLACK);
+		deleteFileButton.setBackground(Color.WHITE);
+		deleteFileButton.setForeground(Color.BLACK);
+		viewFilesButton.setBackground(Color.WHITE);
+		viewFilesButton.setForeground(Color.BLACK);
+		tfidfButton.setBackground(Color.WHITE);
+		tfidfButton.setForeground(Color.BLACK);
+
+		for (Component button : buttonPanel.getComponents()) {
+			if (button instanceof JButton) {
+				((JButton) button).setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+			}
+		}
+
 		buttonPanel.add(importFileButton);
 		buttonPanel.add(createFileButton);
 		buttonPanel.add(deleteFileButton);
@@ -237,9 +237,9 @@ public class EditorPO extends JFrame {
 					});
 					tfidfThread.start();
 					tfidfButton.setEnabled(true);
-//					totalRows = fileTable.getRowCount();
+					// totalRows = fileTable.getRowCount();
 					selectedRow = fileTable.getSelectedRow();
-//					unselectedRows = totalRows - selectedRow;
+					// unselectedRows = totalRows - selectedRow;
 				}
 			}
 		});
@@ -321,15 +321,15 @@ public class EditorPO extends JFrame {
 		JButton segmentationButton = new JButton("Segment Content");
 
 		saveFileButton.setFont(buttonFont);
-        backButton.setFont(buttonFont);
-        transliterateButton.setFont(buttonFont);
-        lemmatizeButton.setFont(buttonFont);
-        extractPOSButton.setFont(buttonFont);
-        extractRootsButton.setFont(buttonFont);
-        pmiButton.setFont(buttonFont);
-        pklButton.setFont(buttonFont);
-        stemmingButton.setFont(buttonFont);
-        segmentationButton.setFont(buttonFont);
+		backButton.setFont(buttonFont);
+		transliterateButton.setFont(buttonFont);
+		lemmatizeButton.setFont(buttonFont);
+		extractPOSButton.setFont(buttonFont);
+		extractRootsButton.setFont(buttonFont);
+		pmiButton.setFont(buttonFont);
+		pklButton.setFont(buttonFont);
+		stemmingButton.setFont(buttonFont);
+		segmentationButton.setFont(buttonFont);
 
 		nextButton = new JButton("Next Page");
 		previousButton = new JButton("Previous Page");
@@ -341,50 +341,49 @@ public class EditorPO extends JFrame {
 		wordCountLabel = new JLabel("Words: 0");
 		avgWordLengthLabel = new JLabel("(Avg Word Length: 0)");
 		totalLineCountLabel = new JLabel("Lines: 0");
-        savingStatusLabel.setFont(buttonFont);
-        totalLineCountLabel.setFont(buttonFont);
-        wordCountLabel.setFont(buttonFont);
-        avgWordLengthLabel.setFont(buttonFont);
+		savingStatusLabel.setFont(buttonFont);
+		totalLineCountLabel.setFont(buttonFont);
+		wordCountLabel.setFont(buttonFont);
+		avgWordLengthLabel.setFont(buttonFont);
 
 		JPanel editButtonPanel = new JPanel(new FlowLayout());
-		
+
 		contentTextArea.setBackground(Color.WHITE);
-        contentTextArea.setForeground(Color.BLACK);
-        Font textFont = new Font("Arial", Font.BOLD, 30);
-        contentTextArea.setFont(textFont);
-        contentTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		contentTextArea.setForeground(Color.BLACK);
+		Font textFont = new Font("Arial", Font.BOLD, 30);
+		contentTextArea.setFont(textFont);
+		contentTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
-        saveFileButton.setBackground(Color.WHITE);
-        saveFileButton.setForeground(Color.BLACK);
-        backButton.setBackground(Color.WHITE);
-        backButton.setForeground(Color.BLACK);
-        transliterateButton.setBackground(Color.WHITE);
-        transliterateButton.setForeground(Color.BLACK);
-        lemmatizeButton.setBackground(Color.WHITE);
-        lemmatizeButton.setForeground(Color.BLACK);
-        extractRootsButton.setBackground(Color.WHITE);
-        extractRootsButton.setForeground(Color.BLACK);
-        extractPOSButton.setBackground(Color.WHITE);
-        extractPOSButton.setForeground(Color.BLACK);
-        pmiButton.setBackground(Color.WHITE);
-        pmiButton.setForeground(Color.BLACK);
-        pklButton.setBackground(Color.WHITE);
-        pklButton.setForeground(Color.BLACK);
-        stemmingButton.setBackground(Color.WHITE);
-        stemmingButton.setForeground(Color.BLACK);
-        segmentationButton.setBackground(Color.WHITE);
-        segmentationButton.setForeground(Color.BLACK);
+		saveFileButton.setBackground(Color.WHITE);
+		saveFileButton.setForeground(Color.BLACK);
+		backButton.setBackground(Color.WHITE);
+		backButton.setForeground(Color.BLACK);
+		transliterateButton.setBackground(Color.WHITE);
+		transliterateButton.setForeground(Color.BLACK);
+		lemmatizeButton.setBackground(Color.WHITE);
+		lemmatizeButton.setForeground(Color.BLACK);
+		extractRootsButton.setBackground(Color.WHITE);
+		extractRootsButton.setForeground(Color.BLACK);
+		extractPOSButton.setBackground(Color.WHITE);
+		extractPOSButton.setForeground(Color.BLACK);
+		pmiButton.setBackground(Color.WHITE);
+		pmiButton.setForeground(Color.BLACK);
+		pklButton.setBackground(Color.WHITE);
+		pklButton.setForeground(Color.BLACK);
+		stemmingButton.setBackground(Color.WHITE);
+		stemmingButton.setForeground(Color.BLACK);
+		segmentationButton.setBackground(Color.WHITE);
+		segmentationButton.setForeground(Color.BLACK);
 
-        for (Component button : editButtonPanel.getComponents()) {
-            if (button instanceof JButton) {
-                ((JButton) button).setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-            }
-        }
-        
-        
-        editButtonPanel.add(totalLineCountLabel);
-        editButtonPanel.add(wordCountLabel);
-        editButtonPanel.add(avgWordLengthLabel);
+		for (Component button : editButtonPanel.getComponents()) {
+			if (button instanceof JButton) {
+				((JButton) button).setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+			}
+		}
+
+		editButtonPanel.add(totalLineCountLabel);
+		editButtonPanel.add(wordCountLabel);
+		editButtonPanel.add(avgWordLengthLabel);
 		editButtonPanel.add(previousButton);
 		editButtonPanel.add(pageCountLabel);
 		editButtonPanel.add(nextButton);
@@ -412,7 +411,7 @@ public class EditorPO extends JFrame {
 				return false;
 			}
 		};
-		
+
 		JTable resultTable = new JTable(resultTableModel);
 
 		resultTable.getTableHeader().setReorderingAllowed(false);
@@ -440,22 +439,22 @@ public class EditorPO extends JFrame {
 			if (autoSaveThread != null && autoSaveThread.isAlive()) {
 				autoSaveThread.interrupt();
 			}
-			
-		    totalLineCountRunning = false; 
-		    if (totalLineCountThread != null && totalLineCountThread.isAlive()) {
-		    	totalLineCountThread.interrupt();
-		    }
-			
-			wordCountRunning = false; 
-		    if (wordCountThread != null && wordCountThread.isAlive()) {
-		        wordCountThread.interrupt(); 
-		        avgWordLengthThread.interrupt();
-		    }
-		    
-		    avgWordLengthRunning = false; 
-		    if (avgWordLengthThread != null && avgWordLengthThread.isAlive()) {
-		        avgWordLengthThread.interrupt();
-		    }
+
+			totalLineCountRunning = false;
+			if (totalLineCountThread != null && totalLineCountThread.isAlive()) {
+				totalLineCountThread.interrupt();
+			}
+
+			wordCountRunning = false;
+			if (wordCountThread != null && wordCountThread.isAlive()) {
+				wordCountThread.interrupt();
+				avgWordLengthThread.interrupt();
+			}
+
+			avgWordLengthRunning = false;
+			if (avgWordLengthThread != null && avgWordLengthThread.isAlive()) {
+				avgWordLengthThread.interrupt();
+			}
 			CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
 			cardLayout.show(getContentPane(), "MainMenu");
 			refreshFileList();
@@ -551,38 +550,41 @@ public class EditorPO extends JFrame {
 		}
 	}
 
-//	private void lemmatizeContent() {
-//		String content = contentTextArea.getText();
-//		if (content != null && !content.trim().isEmpty()) {
-//			List<String> lemmatizedWords = businessObj.lemmatizeWords(content);
-//			String result = String.join(", ", lemmatizedWords);
-//			JOptionPane.showMessageDialog(this, "Lemmatized Words: " + result);
-//		} else {
-//			JOptionPane.showMessageDialog(null, "Content is empty. Please enter text to lemmatize.");
-//		}
-//	}
-//
-//	private void extractPOSContent() {
-//		String content = contentTextArea.getText();
-//		if (content != null && !content.trim().isEmpty()) {
-//			List<String> posList = businessObj.extractPOS(content);
-//			String result = String.join(", ", posList);
-//			JOptionPane.showMessageDialog(this, "Extracted POS: " + result);
-//		} else {
-//			JOptionPane.showMessageDialog(null, "Content is empty. Please enter text to extract POS.");
-//		}
-//	}
-//
-//	private void extractRootsContent() {
-//		String content = contentTextArea.getText();
-//		if (content != null && !content.trim().isEmpty()) {
-//			List<String> rootsList = businessObj.extractRoots(content);
-//			String result = String.join(", ", rootsList);
-//			JOptionPane.showMessageDialog(this, "Extracted Roots: " + result);
-//		} else {
-//			JOptionPane.showMessageDialog(null, "Content is empty. Please enter text to extract roots.");
-//		}
-//	}
+	// private void lemmatizeContent() {
+	// String content = contentTextArea.getText();
+	// if (content != null && !content.trim().isEmpty()) {
+	// List<String> lemmatizedWords = businessObj.lemmatizeWords(content);
+	// String result = String.join(", ", lemmatizedWords);
+	// JOptionPane.showMessageDialog(this, "Lemmatized Words: " + result);
+	// } else {
+	// JOptionPane.showMessageDialog(null, "Content is empty. Please enter text to
+	// lemmatize.");
+	// }
+	// }
+	//
+	// private void extractPOSContent() {
+	// String content = contentTextArea.getText();
+	// if (content != null && !content.trim().isEmpty()) {
+	// List<String> posList = businessObj.extractPOS(content);
+	// String result = String.join(", ", posList);
+	// JOptionPane.showMessageDialog(this, "Extracted POS: " + result);
+	// } else {
+	// JOptionPane.showMessageDialog(null, "Content is empty. Please enter text to
+	// extract POS.");
+	// }
+	// }
+	//
+	// private void extractRootsContent() {
+	// String content = contentTextArea.getText();
+	// if (content != null && !content.trim().isEmpty()) {
+	// List<String> rootsList = businessObj.extractRoots(content);
+	// String result = String.join(", ", rootsList);
+	// JOptionPane.showMessageDialog(this, "Extracted Roots: " + result);
+	// } else {
+	// JOptionPane.showMessageDialog(null, "Content is empty. Please enter text to
+	// extract roots.");
+	// }
+	// }
 
 	private void setupTransliterationPanel() {
 		transliteratedTextArea = new JTextArea();
@@ -597,11 +599,11 @@ public class EditorPO extends JFrame {
 
 		JButton backToEditButton = new JButton("Back to Edit");
 		backToEditButton.setFont(buttonFont);
-		
+
 		backToEditButton.setBackground(Color.WHITE);
-        backToEditButton.setForeground(Color.BLACK);
-        
-        backToEditButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		backToEditButton.setForeground(Color.BLACK);
+
+		backToEditButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
 		backToEditButton.addActionListener(e -> {
 			CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
@@ -614,39 +616,39 @@ public class EditorPO extends JFrame {
 		transliterationPanel.add(transliterationScroller, BorderLayout.CENTER);
 		transliterationPanel.add(buttonPanel, BorderLayout.SOUTH);
 	}
-	
+
 	private double calculateAvgWordLength(String content) {
-	    if (content == null || content.isEmpty()) {
-	        return 0;
-	    }
+		if (content == null || content.isEmpty()) {
+			return 0;
+		}
 
-	    String[] words = content.split("\\s+");
-	    int totalLength = 0;
-	    int wordCount = 0;
+		String[] words = content.split("\\s+");
+		int totalLength = 0;
+		int wordCount = 0;
 
-	    for (String word : words) {
-	        if (!word.isEmpty()) {
-	            totalLength += word.length();
-	            wordCount++;
-	        }
-	    }
+		for (String word : words) {
+			if (!word.isEmpty()) {
+				totalLength += word.length();
+				wordCount++;
+			}
+		}
 
-	    return wordCount == 0 ? 0 : (double) totalLength / wordCount;
+		return wordCount == 0 ? 0 : (double) totalLength / wordCount;
 	}
-	
+
 	private int calculateWordCount(String text) {
-	    if (text == null || text.trim().isEmpty()) {
-	        return 0;
-	    }
-	    return text.trim().split("\\s+").length;
+		if (text == null || text.trim().isEmpty()) {
+			return 0;
+		}
+		return text.trim().split("\\s+").length;
 	}
-	
+
 	private int calculateLineCount(String content) {
 		if (content == null || content.isEmpty()) {
-	        return 0;
-	    }
-	    String[] lines = content.split("\r?\n");
-	    return lines.length;
+			return 0;
+		}
+		String[] lines = content.split("\r?\n");
+		return lines.length;
 	}
 
 	private void openEditPanel(int fileId) {
@@ -684,67 +686,67 @@ public class EditorPO extends JFrame {
 			}
 
 		});
-		
-		totalLineCountThread = new Thread(new Runnable() {
-	        
-	        @Override
-	        public void run() {
-	            while (totalLineCountRunning) {
-	                try {
-	                    Thread.sleep(500); 
-	                    String content = contentTextArea.getText();
-	                    int lineCount = calculateLineCount(content);
 
-	                    SwingUtilities.invokeLater(() -> {
-	                        totalLineCountLabel.setText("Lines: " + lineCount);
-	                    });
-	                } catch (InterruptedException e) {
-	                    Thread.currentThread().interrupt();
-	                    break; 
-	                }
-	            }
-	        }
-	    });
-		
+		totalLineCountThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (totalLineCountRunning) {
+					try {
+						Thread.sleep(500);
+						String content = contentTextArea.getText();
+						int lineCount = calculateLineCount(content);
+
+						SwingUtilities.invokeLater(() -> {
+							totalLineCountLabel.setText("Lines: " + lineCount);
+						});
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+						break;
+					}
+				}
+			}
+		});
+
 		wordCountThread = new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				while (wordCountRunning) {
-		            try {
-		                Thread.sleep(500); 
-		                String content = contentTextArea.getText();
-		                int wordCount = calculateWordCount(content);		                
-		                SwingUtilities.invokeLater(() -> {
-		                    wordCountLabel.setText("Words: " + wordCount);
-		                });
-		            } catch (InterruptedException e) {
-		                Thread.currentThread().interrupt();
-		                break; 
-		            }
-		        }
+					try {
+						Thread.sleep(500);
+						String content = contentTextArea.getText();
+						int wordCount = calculateWordCount(content);
+						SwingUtilities.invokeLater(() -> {
+							wordCountLabel.setText("Words: " + wordCount);
+						});
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+						break;
+					}
+				}
 			}
 		});
-		
+
 		avgWordLengthThread = new Thread(new Runnable() {
-	        @Override
-	        public void run() {
-	            while (avgWordLengthRunning) {
-	                try {
-	                    Thread.sleep(500);
-	                    String content = contentTextArea.getText();
-	                    double avgWordLength = calculateAvgWordLength(content);
-	                    SwingUtilities.invokeLater(() -> {
-	                        avgWordLengthLabel.setText("(Avg Word Length: " + (int)avgWordLength+")");
-	                    });
-	                } catch (InterruptedException e) {
-	                    Thread.currentThread().interrupt();
-	                    break;
-	                }
-	            }
-	        }
-	    });
+			@Override
+			public void run() {
+				while (avgWordLengthRunning) {
+					try {
+						Thread.sleep(500);
+						String content = contentTextArea.getText();
+						double avgWordLength = calculateAvgWordLength(content);
+						SwingUtilities.invokeLater(() -> {
+							avgWordLengthLabel.setText("(Avg Word Length: " + (int) avgWordLength + ")");
+						});
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+						break;
+					}
+				}
+			}
+		});
 
 		pklThread = new Thread(new Runnable() {
 
@@ -871,9 +873,15 @@ public class EditorPO extends JFrame {
 	private void autoSaveFile() throws RemoteException, InterruptedException {
 		int selectedRow = fileTable.getSelectedRow();
 		if (selectedRow != -1) {
+			String content = contentTextArea.getText();
+
+			if (!businessObj.shouldAutoSave(content)) {
+				savingStatusLabel.setVisible(false);
+				return;
+			}
+
 			int fileId = (int) tableModel.getValueAt(selectedRow, 0);
 			String fileName = (String) tableModel.getValueAt(selectedRow, 1);
-			String content = contentTextArea.getText();
 
 			if (content == null || content.trim().isEmpty()) {
 				content = "";
@@ -886,8 +894,7 @@ public class EditorPO extends JFrame {
 				savingStatusLabel.setVisible(false);
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Unable to Save File");
-			logger.error("Unable to Save File");
+			logger.error("Unable to Auto-Save File: no file selected");
 		}
 	}
 

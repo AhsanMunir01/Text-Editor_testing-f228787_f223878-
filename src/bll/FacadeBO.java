@@ -114,4 +114,9 @@ public class FacadeBO implements IFacadeBO {
 		return bo.segmentWords(text);
 	}
 
+	@Override
+	public boolean shouldAutoSave(String content) {
+		return bo.shouldAutoSave(content);
+	}
+
 }
