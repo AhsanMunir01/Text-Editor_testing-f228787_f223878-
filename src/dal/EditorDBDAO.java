@@ -218,6 +218,7 @@ public class EditorDBDAO implements IEditorDBDAO {
 			}
 
 //			tfidfStmt = conn.prepareStatement(tfidfQuery);
+			if (Double.isNaN(tfidf)) tfidf = 0.0;
 			tfidfStmt.setInt(1, fileID);
 			tfidfStmt.setDouble(2, tfidf);
 			tfidfStmt.executeUpdate();
@@ -301,14 +302,21 @@ public class EditorDBDAO implements IEditorDBDAO {
 
 			String insertPosQuery = "INSERT INTO pos (pageId, word, pos) VALUES (?, ?, ?)";
 			posStmt = conn.prepareStatement(insertPosQuery);
-			for (Map.Entry<String, List<String>> entry : posTagsMap.entrySet()) {
-				String word = entry.getKey();
-				String posTags = String.join("|", entry.getValue());
-				posStmt.setInt(1, pageId);
-				posStmt.setString(2, word);
-				posStmt.setString(3, posTags);
-				posStmt.addBatch();
+			Map<String, Double> scoreMap = performPMI(content);
+
+			for (Map.Entry<String, Double> entry : scoreMap.entrySet()) {
+			    String word = entry.getKey();
+			    Double value = entry.getValue();
+			    if (value == null || value.isNaN()) {
+			        value = 0.0;
+			    }
+
+			    pmiStmt.setInt(1, pageId);
+			    pmiStmt.setString(2, word);
+			    pmiStmt.setDouble(3, value);
+			    pmiStmt.addBatch();
 			}
+
 			posStmt.executeBatch();
 
 			// Update lemmatization
@@ -417,6 +425,7 @@ public class EditorDBDAO implements IEditorDBDAO {
 			double tfidf = performTFIDF(getAllExistingFilesContent(conn), content);
 			String tfidfQuery = "UPDATE tfidf SET tfidfScore = ? WHERE fileId = ?";
 			tfidfStmt = conn.prepareStatement(tfidfQuery);
+			if (Double.isNaN(tfidf)) tfidf = 0.0;
 			tfidfStmt.setDouble(1, tfidf);
 			tfidfStmt.setInt(2, fileId);
 			tfidfStmt.executeUpdate();
