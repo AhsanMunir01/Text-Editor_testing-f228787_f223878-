@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jar_file">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mockito-core-5.21.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mariadb-java-client-3.5.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

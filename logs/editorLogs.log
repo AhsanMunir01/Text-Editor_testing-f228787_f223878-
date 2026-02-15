@@ -47,3 +47,6 @@
 2026-02-15 19:45:25.348 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
 2026-02-15 20:49:55.347 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
 2026-02-15 20:50:49.980 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 21:29:45.593 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 22:09:56.848 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 22:09:57.288 [main] ERROR pl.EditorPO - (conn=37) Access denied for user 'root'@'localhost'
