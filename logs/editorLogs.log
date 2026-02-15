@@ -40,3 +40,10 @@
 2026-02-14 01:28:03.090 [Thread-0] ERROR pl.EditorPO - (conn=65) Unknown column 'NaN' in 'VALUES'
 2026-02-14 01:28:03.103 [Thread-2] ERROR pl.EditorPO - (conn=65) Unknown column 'NaN' in 'SET'
 2026-02-14 01:28:05.743 [Thread-0] INFO  pl.EditorPO - TXT.txt failed to upload!
+2026-02-15 02:15:41.862 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 02:19:10.451 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 02:22:05.692 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 02:22:37.543 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 19:45:25.348 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 20:49:55.347 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
+2026-02-15 20:50:49.980 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
