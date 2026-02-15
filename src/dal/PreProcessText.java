@@ -23,8 +23,23 @@ public class PreProcessText {
 	}
 
 	public static String preprocessText(String text) {
-		text = removeHarakat(text);
-		text = removeNonArabicCharacters(text);
-		return text.toLowerCase();
+		if (text == null || text.trim().isEmpty()) {
+			return text;
+		}
+		
+		// Check if text contains Arabic characters
+		boolean hasArabic = text.matches(".*[\\p{IsArabic}].*");
+		
+		if (hasArabic) {
+			// For Arabic text, apply Arabic-specific preprocessing
+			text = removeHarakat(text);
+			text = removeNonArabicCharacters(text);
+		} else {
+			// For non-Arabic text (like English), just clean and normalize
+			text = text.replaceAll("[^a-zA-Z0-9\\s]", ""); // Remove special characters but keep alphanumeric
+			text = text.replaceAll("\\s+", " "); // Normalize whitespace
+		}
+		
+		return text.toLowerCase().trim();
 	}
 }
