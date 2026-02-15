@@ -1,0 +1,10 @@
+2026-02-15 22:54:20.502 [main] ERROR pl.EditorPO - (conn=39) Access denied for user 'root'@'localhost'
+2026-02-15 22:54:29.246 [Thread-0] ERROR pl.EditorPO - Cannot invoke "java.sql.Connection.rollback()" because "this.conn" is null
+2026-02-15 22:54:31.133 [Thread-0] INFO  pl.EditorPO - TXT.txt failed to upload!
+2026-02-15 22:55:26.258 [Thread-1] ERROR pl.EditorPO - Cannot invoke "java.sql.Connection.rollback()" because "this.conn" is null
+2026-02-15 22:55:27.683 [Thread-1] INFO  pl.EditorPO - TXT.txt failed to upload!
+2026-02-15 22:56:10.010 [main] ERROR pl.EditorPO - (conn=40) Access denied for user 'root'@'localhost'
+2026-02-15 22:56:20.957 [Thread-0] ERROR pl.EditorPO - Cannot invoke "java.sql.Connection.rollback()" because "this.conn" is null
+2026-02-15 23:05:28.581 [main] ERROR pl.EditorPO - (conn=41) Access denied for user 'root'@'localhost'
+2026-02-15 23:05:37.183 [Thread-0] ERROR pl.EditorPO - Cannot invoke "java.sql.Connection.rollback()" because "this.conn" is null
+2026-02-15 23:05:39.461 [Thread-0] INFO  pl.EditorPO - TXT.txt failed to upload!
