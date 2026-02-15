@@ -50,3 +50,6 @@
 2026-02-15 21:29:45.593 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
 2026-02-15 22:09:56.848 [main] WARN  pl.EditorPO - Unsupported file format: docx. Please convert to .txt format.
 2026-02-15 22:09:57.288 [main] ERROR pl.EditorPO - (conn=37) Access denied for user 'root'@'localhost'
+2026-02-15 22:50:21.882 [main] ERROR pl.EditorPO - (conn=38) Access denied for user 'root'@'localhost'
+2026-02-15 22:50:34.619 [Thread-0] ERROR pl.EditorPO - Cannot invoke "java.sql.Connection.rollback()" because "this.conn" is null
+2026-02-15 22:50:37.592 [Thread-0] INFO  pl.EditorPO - TXT.txt failed to upload!
