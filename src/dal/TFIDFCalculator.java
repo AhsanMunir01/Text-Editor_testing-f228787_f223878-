@@ -14,12 +14,39 @@ public class TFIDFCalculator {
 	private List<String> corpus = new ArrayList<>();
 
 	public void addDocumentToCorpus(String document) {
-		corpus.add(PreProcessText.preprocessText(document));
+		if (document != null) {
+			String preprocessed = PreProcessText.preprocessText(document);
+			if (preprocessed != null && !preprocessed.trim().isEmpty()) {
+				corpus.add(preprocessed);
+			}
+		}
 	}
 
 	public double calculateDocumentTfIdf(String document) {
+		// Handle null or empty document
+		if (document == null || document.trim().isEmpty()) {
+			return 0.0;
+		}
+		
+		// Handle empty corpus
+		if (corpus.isEmpty()) {
+			return 0.0;
+		}
+		
 		String preprocessedDoc = PreProcessText.preprocessText(document);
+		
+		// Handle empty preprocessed document
+		if (preprocessedDoc == null || preprocessedDoc.trim().isEmpty()) {
+			return 0.0;
+		}
+		
 		String[] words = preprocessedDoc.split("\\s+");
+		
+		// Handle document with no words after preprocessing
+		if (words.length == 0) {
+			return 0.0;
+		}
+		
 		List<String> wordList = Arrays.asList(words);
 
 		Map<String, Double> tf = calculateTermFrequency(wordList);
@@ -37,10 +64,18 @@ public class TFIDFCalculator {
 
 	private Map<String, Double> calculateTermFrequency(List<String> wordList) {
 		Map<String, Double> tf = new HashMap<>();
+		
+		// Handle empty word list
+		if (wordList == null || wordList.isEmpty()) {
+			return tf;
+		}
+		
 		double totalWords = wordList.size();
 
 		for (String word : wordList) {
-			tf.put(word, tf.getOrDefault(word, 0.0) + 1);
+			if (word != null && !word.trim().isEmpty()) {
+				tf.put(word, tf.getOrDefault(word, 0.0) + 1);
+			}
 		}
 
 		for (String word : tf.keySet()) {
@@ -53,16 +88,30 @@ public class TFIDFCalculator {
 	private Map<String, Double> calculateInverseDocumentFrequency() {
 		Map<String, Double> idf = new HashMap<>();
 		int totalDocs = corpus.size();
+		
+		// Handle empty corpus
+		if (totalDocs == 0) {
+			return idf;
+		}
 
 		for (String doc : corpus) {
-			Set<String> uniqueWords = Arrays.stream(doc.split("\\s+")).collect(Collectors.toSet());
-			for (String word : uniqueWords) {
-				idf.put(word, idf.getOrDefault(word, 0.0) + 1);
+			if (doc != null && !doc.trim().isEmpty()) {
+				Set<String> uniqueWords = Arrays.stream(doc.split("\\s+"))
+						.filter(word -> word != null && !word.trim().isEmpty())
+						.collect(Collectors.toSet());
+				for (String word : uniqueWords) {
+					idf.put(word, idf.getOrDefault(word, 0.0) + 1);
+				}
 			}
 		}
 
 		for (String word : idf.keySet()) {
-			idf.put(word, Math.log((double) totalDocs / (1 + idf.get(word))));
+			double docFreq = idf.get(word);
+			if (docFreq > 0) {
+				idf.put(word, Math.log((double) totalDocs / docFreq));
+			} else {
+				idf.put(word, 0.0);
+			}
 		}
 
 		return idf;
